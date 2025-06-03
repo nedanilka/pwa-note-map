@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заметки на карте</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    #app { display: flex; height: 100vh; }
+    #map { flex: 1; }
+    #sidebar { width: 300px; padding: 10px; overflow-y: auto; background: #f5f5f5; }
+    .note { background: white; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
+    button { padding: 8px 12px; margin: 5px 0; cursor: pointer; }
+    textarea { width: 100%; min-height: 100px; margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="map"></div>
+    <div id="sidebar">
+      <h2>Мои заметки</h2>
+      <button id="addNoteBtn">Добавить заметку</button>
+      <div id="notesList"></div>
+    </div>
+  </div>
+
+  <div id="noteModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.5); z-index:1000; justify-content:center; align-items:center;">
+    <div style="background:white; padding:20px; border-radius:5px; width:80%; max-width:500px;">
+      <h3 id="modalTitle">Новая заметка</h3>
+      <textarea id="noteText" placeholder="Текст заметки"></textarea>
+      <div>
+        <label>Широта: <input type="text" id="noteLat"></label>
+        <label>Долгота: <input type="text" id="noteLng"></label>
+      </div>
+      <button id="saveNoteBtn">Сохранить</button>
+      <button id="deleteNoteBtn" style="display:none;">Удалить</button>
+      <button id="cancelNoteBtn">Отмена</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
